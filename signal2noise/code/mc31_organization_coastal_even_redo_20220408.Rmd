@@ -1,0 +1,140 @@
+---
+title: "Mock Community File Organization"
+author: "Zack Gold"
+date: "4/8/2022"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(here)
+```
+
+
+#Upload Data
+```{r}
+input_dna <- read.csv(file =here("signal2noise","data","input_dna_conc_communities_20210103.csv"), sep=",", header=TRUE)
+
+hash.key_updated_c19 <- readRDS(file=here("signal2noise","data","mock_sequences","hash.key_updated_c19.RDS"))
+
+
+ASV_C60_c19 <- read.table(file=here("signal2noise","data","mock_sequences","mock_even_redo","c19_fishcard_ASV_raw_taxonomy_60.txt"), sep = "\t", header=TRUE)
+
+metadata_kenai <- read.table(file=here("signal2noise","data","mock_sequences","mock_even_redo","metadata_kenai1_20220408.csv"), sep = ",", header=TRUE)
+
+metadata_kenai %>% 
+  filter(., str_detect(New_name,"Even")) -> mock_even_samples
+
+ASV_C60_c19 %>% 
+  dplyr::select(fishcard_seq_number,sum.taxonomy, mock_even_samples$Seq_number_2) -> ASV_C60_c19
+
+```
+
+#Organize Data
+```{r}
+
+ASV_C60_c19 %>% 
+  pivot_longer(`c19_fishcard_Kenai.seqrun1.115.S115.L001`:`c19_fishcard_Kenai.seqrun1.120.S120.L001`, names_to="Sample", values_to = "nReads") %>% 
+  filter(., str_detect(fishcard_seq_number,"merged")) %>% 
+  filter(., !str_detect(fishcard_seq_number,"unmerged")) %>%
+  dplyr::select(-sum.taxonomy, ASV=fishcard_seq_number,Sample,nReads) %>% 
+  left_join(hash.key_updated_c19) %>% 
+  filter(., sum.taxonomy!=";NA;NA;NA;NA;NA;NA") %>% 
+    left_join(mock_even_samples, by=c("Sample"="Seq_number_2")) %>% 
+  mutate(., community = case_when(str_detect(New_name,"Coastal_Even_e5")~"Coastal_Even_e5",
+                                 str_detect(New_name,"Coastal_Even_e4")~"Coastal_Even_e4") )%>%
+ separate(
+., sum.taxonomy,
+into = c(
+"Domain",
+"Phylum",
+"Class",
+"Order",
+"Family",
+"Genus",
+"Species"
+),
+sep = ";",
+remove = FALSE
+) %>%
+ungroup() %>%
+mutate(., ID_mifish = if_else(Species == "", Genus, Species)) %>%
+mutate(., ID_mifish = if_else(ID_mifish == "", Family, ID_mifish)) %>%
+mutate(., ID_mifish = if_else(ID_mifish == "", Order, ID_mifish)) %>%
+mutate(., ID_mifish = if_else(ID_mifish == "", Class, ID_mifish)) %>%
+mutate(., ID_mifish = if_else(ID_mifish == "", Phylum, ID_mifish)) %>%
+mutate(., ID_mifish = if_else(ID_mifish == "", Domain, ID_mifish)) %>%
+mutate(., ID_mifish = replace_na(ID_mifish, "")) %>% 
+  dplyr::select(community,tech_rep=Tech_rep,ID_mifish,Cycles=PCR_Cycles, nReads) %>% 
+  group_by(community,tech_rep,ID_mifish,Cycles) %>% 
+  dplyr::summarize(nReads = sum(nReads)) -> mock_mifish_data
+
+input_dna %>% 
+    filter(., str_detect(Community, "Coastal_Even")) %>% 
+  filter(., Barcode=="12S") %>% 
+  dplyr::select(ID_mifish=Species,community=Community,start_conc_ng = Total_DNA) %>% distinct() -> input_dna2
+
+ 
+mock_mifish_data %>% 
+  ungroup() %>% 
+  add_row(community="Coastal_Even", tech_rep=1,ID_mifish="Roncador stearnsii",Cycles=39,nReads=0) %>% 
+  add_row(community="Coastal_Even", tech_rep=2,ID_mifish="Roncador stearnsii",Cycles=39,nReads=0) %>% 
+    add_row(community="Coastal_Even", tech_rep=3,ID_mifish="Roncador stearnsii",Cycles=39,nReads=0) %>% 
+  add_row(community="Coastal_Even", tech_rep=1,ID_mifish="Torpedo californicus",Cycles=39,nReads=0) %>% 
+  add_row(community="Coastal_Even", tech_rep=2,ID_mifish="Torpedo californicus",Cycles=39,nReads=0) %>% 
+    add_row(community="Coastal_Even", tech_rep=3,ID_mifish="Torpedo californicus",Cycles=39,nReads=0) %>% 
+  add_row(community="Coastal_Even", tech_rep=1,ID_mifish="Urobatis halleri",Cycles=39,nReads=0) %>% 
+  add_row(community="Coastal_Even", tech_rep=2,ID_mifish="Urobatis halleri",Cycles=39,nReads=0) %>% 
+    add_row(community="Coastal_Even", tech_rep=3,ID_mifish="Urobatis halleri",Cycles=39,nReads=0) %>%
+  unite("holder", c("community", "tech_rep","Cycles"),sep=":") %>% 
+  pivot_wider(names_from = holder, values_from = nReads, values_fill = 0) %>% 
+  pivot_longer(-ID_mifish, names_to="holder", values_to = "nReads") %>% 
+  separate(holder, into=c("community", "tech_rep","Cycles"),sep=":") -> mock_mifish_data
+  
+  
+mock_mifish_data %>%  
+  ungroup() %>% 
+  full_join(input_dna2) %>% 
+  dplyr::mutate(start_conc_ng = replace_na(start_conc_ng, 0))-> fully_combo
+  
+```
+
+```{r}
+saveRDS(fully_combo, here("signal2noise","data","mifish_mock_community_data_coastal_even_redo.RDS") )
+
+```
+
+
+```{r}
+library(RColorBrewer)
+n <- 60
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector = unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
+pie(rep(1,n), col=sample(col_vector, n))
+
+fully_combo %>% 
+    unite("sample", c("community", "tech_rep","Cycles"),sep=":", remove = F) %>%
+  group_by(sample) %>% 
+  dplyr::summarise(tot_reads=sum(nReads)) -> tot_reads
+
+
+fully_combo %>% 
+      unite("sample", c("community", "tech_rep","Cycles"),sep=":", remove = F) %>%
+  left_join(tot_reads) %>% 
+  mutate(., prop=nReads/tot_reads) %>% 
+  filter(., nReads > 0) %>% 
+  ggplot(aes(x=tech_rep, y=prop, fill=ID_mifish)) +geom_bar(position="stack", stat="identity") +facet_wrap(community~Cycles) +scale_fill_manual(values=col_vector) -> coastal_stacked_bar_plot
+
+
+coastal_stacked_bar_plot
+ggsave(
+coastal_stacked_bar_plot,
+file = here::here("signal2noise","figures", "Coastal_Even_redo_stacked_barplot.png"),
+width = 14,
+height = 8
+)  
+
+```
+
+
+

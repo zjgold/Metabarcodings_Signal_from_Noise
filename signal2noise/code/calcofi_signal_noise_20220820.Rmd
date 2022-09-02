@@ -1,0 +1,534 @@
+---
+title: "Amp Eff Punnet Square Exploration"
+author: "Zack Gold"
+date: "12/2/2021"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(here)
+library(ggpmisc)
+here()
+library(see)
+library(PNWColors)
+library(ggbeeswarm)
+library(patchwork)
+library(scales)
+library(ggdist)
+```
+
+# Alpha Data
+```{r}
+alphas <- read.csv(file = here("signal2noise","data","All_amp_efficiencies-2022-06-03.csv"))
+
+alphas %>% 
+  mutate(., alpha = mean) %>% 
+  mutate(., ID_mifish=Species) %>% distinct() %>% 
+  mutate(., ID_mifish = if_else(str_detect(ID_mifish, "zRefSpecies_Citharichthys sordidus"),		"Citharichthys sordidus",ID_mifish)) %>% 
+mutate(., ID_mifish = if_else(str_detect(ID_mifish, "Vinciguerria lucetia"),"Vinciguerria sp.",ID_mifish)) %>% 
+  mutate(., ID_mifish = if_else(str_detect(ID_mifish, "Nannobrachium ritteri"),"Nannobrachium",ID_mifish)) -> alphas
+
+alphas %>% 
+  dplyr::summarise(max(alpha),min(alpha), mean(alpha))
+
+
+alphas %>% 
+  mutate(., alpha = mean) %>% 
+  mutate(., ID_mifish=Species) %>% distinct() %>% 
+  mutate(., ID_mifish = if_else(str_detect(ID_mifish, "zRefSpecies_Citharichthys sordidus"),		"Citharichthys sordidus",ID_mifish))-> alphas_mock
+
+alphas
+```
+
+# Mock Community Emprical Data
+
+
+```{r}
+
+fully_combo <- readRDS( here("signal2noise","data","mifish_mock_community_data.RDS") )
+fully_combo %>% 
+  filter(., Cycles==39) %>% 
+  mutate(., Input_DNA_conc = case_when(community=="Coastal_Even" ~ 426.9,
+                                       community=="Coastal_Skew_1" ~ 545.0,
+                                       community=="Coastal_Skew_2" ~ 381.5,
+                                       community=="North_Even" ~ 395.1,
+                                       community=="North_Skew_1" ~ 467.8,
+                                       community=="North_Skew_2" ~ 445.1,
+                                       community=="Oceanic_Even" ~ 381.5,
+                                       community=="Skew_Oceanic_1" ~ 399.7,
+                                        community=="Skew_Oceanic_2" ~ 499.6)) %>% 
+  mutate(., Input_DNA_per_species= case_when(community=="Coastal_Even" ~ 12.9,
+                                       community=="Coastal_Skew_1" ~ 45.4,
+                                       community=="Coastal_Skew_2" ~ 31.8,
+                                       community=="North_Even" ~ 22,
+                                       community=="North_Skew_1" ~ 39,
+                                       community=="North_Skew_2" ~ 37.1,
+                                       community=="Oceanic_Even" ~ 17.3,
+                                       community=="Skew_Oceanic_1" ~ 33.3,
+                                        community=="Skew_Oceanic_2" ~ 41.6)) %>% 
+  filter(., start_conc_ng>0)->coastal_even_1
+
+coastal_even_1 %>% 
+  filter(., start_conc_ng >0) -> coastal_even_1_species_to_keep
+
+fully_combo_redo <- readRDS(here("signal2noise","data","mifish_mock_community_data_coastal_even_redo.RDS") )
+
+fully_combo_redo %>% 
+  filter(., community !="Coastal_Even") %>% 
+  mutate(., Input_DNA_conc = case_when(community=="Coastal_Even_e4" ~ 4.26*10^6,
+                                       community=="Coastal_Even_e5" ~ 4.26*10^5)) %>% 
+  mutate(., Input_DNA_per_species = case_when(community=="Coastal_Even_e4" ~ (4.26*10^6)/33,
+                                       community=="Coastal_Even_e5" ~ (4.26*10^5)/33)) %>% 
+  mutate(., community ="Coastal_Even") -> coastal_even_2
+
+```
+
+```{r}
+
+rbind(coastal_even_1,coastal_even_2) -> coastal_mock_complete
+
+
+sharkrs <- c("Carcharodon carcharias" ,"Mustelus californicus"   ,     "Myliobatis californica" ,"Rhinobatos productus" ,"Torpedo californicus"   ,      "Triakis semifasciata", "Urobatis halleri", "Squatina californica", "Squalus acanthias","Bathyraja abyssicola")
+
+coastal_mock_complete %>% 
+  group_by(Input_DNA_conc,community,ID_mifish) %>% 
+  dplyr::summarise(observations = n_distinct(tech_rep), zeros = length(tech_rep[nReads==0]), mean_reads = mean(nReads), max_reads=max(nReads), min_reads= min(nReads), start_conc_ng=mean(start_conc_ng), Input_DNA_conc=mean(Input_DNA_conc), Input_DNA_per_species=mean(Input_DNA_per_species)) %>% 
+  mutate(., `Probability of Observing 0 DNA From a Species After Sequencing` = zeros/observations,
+         lambda= Input_DNA_per_species) %>% 
+  filter(., ID_mifish %in% coastal_even_1_species_to_keep$ID_mifish)  %>% 
+  left_join(alphas_mock)-> bony_fish_emp_drop
+
+```
+  
+```{r}
+coastal_mock_complete %>% 
+  left_join(alphas_mock) %>% 
+   mutate(alpha_group = case_when(alpha >-0.07  ~"High Alpha",
+                              TRUE ~"Low Alpha")) %>% 
+  group_by(alpha_group) %>% 
+    #filter(., nReads>0) %>% 
+  filter(., !is.na(alpha)) -> unique_species_mock_calcofi
+
+setdiff(alphas_mock$ID_mifish,unique_species_mock_calcofi$ID_mifish)
+setdiff(unique_species_mock_calcofi$ID_mifish,alphas_mock$ID_mifish)
+
+```
+
+## Figure 2a
+
+
+```{r}
+
+coastal_mock_complete %>% 
+  left_join(alphas_mock) %>% 
+ mutate(alpha_group = case_when(alpha >-0.07  ~"High Alpha",
+                              TRUE ~"Low Alpha")) %>% 
+     mutate(bin=cut(Input_DNA_conc, breaks = c(0,500,500000,5000000),labels=c(500,500000,5000000))) %>%
+  mutate(., bin=as.character(bin),
+         bin=as.numeric(bin)) %>%
+  filter(., nReads>0) %>% 
+  ggplot(., aes(x=bin, y=nReads, side = ifelse(alpha_group == "High Alpha", "left", "right"), colour=alpha_group, fill=alpha_group, group=alpha_group)) + 
+  ggdist::stat_dots( dotsize = 1,
+    stackratio = 1,
+    binwidth = .05, alpha=0.5) +
+  ggdist::stat_slab(
+    adjust = 3,
+    width = 0.6, 
+    .width = 0, fill=NA
+  )  +
+scale_colour_manual(values=c(pnw_palette("Starfish",3)[1],pnw_palette("Starfish",3)[3])) +
+  scale_fill_manual(values=c(pnw_palette("Starfish",3)[1],pnw_palette("Starfish",3)[3]))+
+  theme_bw() +
+theme(
+panel.background = element_rect(fill = 'white', colour = 'white'),
+panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+axis.text.x = element_text(size = 12),
+axis.text.y = element_text(size = 12, angle = 0),
+axis.title.x =element_text(size = 16,  face = "bold"),
+axis.title.y = element_text(size = 16, face = "bold"), legend.position="none"
+) + xlab(expression(paste(lambda," DNA Molecules"))) + ylab("Amplicon Reads")+ guides(fill=guide_legend(title="Amplification Efficiency"), colour=guide_legend(title="Amplification Efficiency")) +  scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x),
+              labels = trans_format("log10", math_format(10^.x)))+
+  scale_x_continuous(trans=scales::pseudo_log_trans(base = 10),    
+                                                                                                                                                                                                     breaks=c(0,500,500000,5000000),
+                           labels=c(0, 
+                           expression(10^2.7),
+                           expression(10^5.7),
+                           expression(10^6.7))) -> fig_2a
+
+fig_2a
+ggsave(
+file = here::here("signal2noise","figures", "Figure_2a.png"),
+width = 16,
+height = 8
+)
+
+
+```
+## Figure 2b
+
+```{r}
+
+bony_fish_emp_drop %>% 
+      mutate(alpha_group = case_when(alpha >-0.07  ~"High Alpha",
+                              TRUE ~"Low Alpha")) %>% 
+   ggplot(aes(x=lambda, y=`Probability of Observing 0 DNA From a Species After Sequencing`, colour=alpha_group, fill=alpha_group)) + geom_count(alpha=0.6)  +xlab(expression(paste(lambda," DNA Molecules"))) +ylab("Proportion Non-Detect")   + scale_size(range = c(2, 12), breaks=c(1,10,100,1000,5000)) +
+  geom_smooth(method = "nls", method.args = 
+        list(formula = y ~ a * x / (b + x), start = list(a = -1, b = -1)), se = FALSE)+
+   scale_colour_manual(values=c(pnw_palette("Starfish",3)[1],pnw_palette("Starfish",3)[3])) +
+  scale_fill_manual(values=c(pnw_palette("Starfish",3)[1],pnw_palette("Starfish",3)[3])) + 
+  theme_bw() +theme(
+panel.background = element_rect(fill = 'white', colour = 'white'),
+panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+axis.text.x = element_text(size = 12),
+axis.text.y = element_text(size = 12, angle = 0),
+          strip.text.x=element_text(size=16),
+axis.title.x =element_text(size = 16,  face = "bold"),
+axis.title.y = element_text(size = 16, face = "bold"),
+#legend.position = "none"
+) +scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
+              labels = trans_format("log10", math_format(10^.x))) +scale_y_continuous(trans='sqrt', breaks = c(0.01,0.05,0.1,0.25,0.5,0.75,1)) +facet_wrap(~alpha_group) + guides(fill=guide_legend(title="Amplification Efficiency"), colour=guide_legend(title="Amplification Efficiency"))-> figure_2b
+
+figure_2b
+
+ggsave(
+  file = here::here("signal2noise","figures", "Figure_2b.png"),
+  width = 14,
+  height = 8
+)
+
+```
+
+## Figure 2 Combination
+```{r}
+
+fig_2a/figure_2b + plot_annotation(tag_levels = 'A') + plot_layout(guides = 'collect')
+
+ggsave(
+file = here::here("signal2noise","figures", "Figure_2_combined.png"),
+width = 12,
+height = 8,
+dpi=400
+)
+```
+```{r}
+MiFish_data <- readRDS(file = here("signal2noise","data","mifish_tech_nReads.RDS"))
+larvae_data <- readRDS(file = here("signal2noise","data", "microscopy_tech_nReads.RDS"))
+
+```
+#CalCOFI Empirical Example
+```{r}
+
+
+mi_reads <- MiFish_data %>%
+    filter(., !is.na(mifish_reads)) %>% 
+  mutate(bio_rep = paste(station_id, ext_rep, sep = "_")) %>%
+  mutate(tech_unique = paste(station_id, ext_rep,tech_rep, sep = "_")) %>%
+  select(-c(Sample, ID_sebastes, Unique_ID)) %>%
+  distinct() 
+
+
+mi_larvae <- larvae_data %>%
+    filter(., !is.na(larval_counts)) %>% 
+  select(-c(ID_sebastes, Unique_ID)) %>%
+  distinct() 
+
+shared_bottles <- intersect(mi_larvae$station_id,mi_reads$station_id)
+
+mi_reads <- mi_reads %>% filter(., station_id %in% shared_bottles)
+mi_larvae <- mi_larvae %>% filter(., station_id %in% shared_bottles)
+
+mi_reads %>% 
+  dplyr::select(ID_mifish) %>% unique() %>% 
+  filter(!str_detect(ID_mifish,"MISSING")) 
+
+mi_reads %>% 
+  dplyr::select(ID_mifish) %>% unique() %>% 
+  filter(!str_detect(ID_mifish,"MISSING")) %>% 
+  filter(str_detect(ID_mifish," "))
+
+mi_reads %>% 
+  dplyr::select(ID_mifish) %>% unique() %>% 
+  filter(!str_detect(ID_mifish,"MISSING")) %>% 
+  filter(str_detect(ID_mifish,"idae"))
+  
+mi_reads %>% 
+  dplyr::select(ID_mifish) %>% unique() %>% 
+  filter(!str_detect(ID_mifish,"MISSING")) %>% 
+  filter(!str_detect(ID_mifish,"idae")) %>% 
+  filter(!str_detect(ID_mifish," "))
+
+mi_reads %>% 
+  dplyr::summarise(sum(mifish_reads), n_distinct(tech_unique),n_distinct(bio_rep), n_distinct(station_id))
+
+
+mi_larvae %>% 
+  dplyr::summarise(sum(larval_counts), n_distinct(station_id))
+
+
+mi_larvae %>% 
+  dplyr::select(ID_microscopy) %>% unique() %>% 
+    filter(str_detect(ID_microscopy," "))
+
+
+```
+
+```{r}
+counts_plus_reads <- left_join(MiFish_data, larvae_data) %>% filter(., station_id %in% shared_bottles)
+
+# lets get the data into wide form 
+counts_plus_reads <- counts_plus_reads %>%
+  mutate(bio_rep = paste(station_id, ext_rep, sep = "_")) %>%
+  select(-c(Sample, ID_sebastes, Unique_ID)) %>%
+  dplyr::mutate(larval_counts = replace_na(larval_counts, 0)) %>% 
+  dplyr::mutate(mifish_reads = replace_na(mifish_reads, 0)) %>% 
+  distinct() 
+
+counts_plus_reads %>% 
+  unite(., Sample_ID, c("station_id","ext_rep","tech_rep"), sep=":") %>% 
+  dplyr::select(-larval_counts) %>% 
+  group_by(Sample_ID) %>% 
+  dplyr::summarise(tot_reads=sum(mifish_reads)) -> mifish_tot_reads
+
+counts_plus_reads %>% 
+  unite(., Sample_ID, c("station_id","ext_rep","tech_rep"), sep=":") %>% 
+  dplyr::select(-mifish_reads) %>% 
+  group_by(Sample_ID) %>% 
+  dplyr::summarise(tot_counts=sum(larval_counts)) -> larvae_tot_counts
+
+mifish_tot_reads %>% 
+  filter(.,tot_reads >0) %>% 
+  dplyr::summarise(max(tot_reads),min(tot_reads),mean(tot_reads),sum(tot_reads))
+```
+
+
+
+
+## Figure 3a
+```{r}
+
+counts_plus_reads %>% 
+    unite(., Sample_ID, c("station_id","ext_rep","tech_rep"), sep=":",remove="F") %>% 
+  left_join(mifish_tot_reads) %>% 
+  left_join(larvae_tot_counts) %>% 
+  mutate(., prop_reads= mifish_reads/tot_reads,
+         prop_counts=larval_counts/tot_counts) %>% 
+  left_join(alphas) %>% 
+  mutate(larval_abundance = case_when(larval_counts > 250  ~"High Counts",
+                              larval_counts >100  ~"Medium Counts",
+                              larval_counts >10  ~"Low Counts",
+                              larval_counts >0  ~"Super Low Counts",
+                              TRUE ~"Not Counted")) %>% 
+  mutate(alpha_group = case_when(alpha >-0.07  ~"High Alpha",
+                              TRUE ~"Low Alpha")) %>% 
+    filter(., tot_reads>0)-> calcofi_dont
+
+
+calcofi_dont %>% 
+  dplyr::select(ID_mifish,Sample_ID,larval_counts) %>% 
+  distinct() %>% 
+    filter(., larval_counts >0) %>% 
+  group_by(ID_mifish) %>% 
+  dplyr::summarise(Sample_count_micro=n_distinct(Sample_ID), tot_obs_micro = sum(larval_counts)) -> micro_obs
+```
+
+```{r}
+counts_plus_reads %>% 
+    left_join(alphas) %>% 
+    mutate(alpha_group = case_when(alpha >-0.07  ~"High Alpha",
+                              TRUE ~"Low Alpha")) %>% 
+  filter(., !is.na(alpha)) %>% 
+    filter(., larval_counts !=0) %>%  
+    filter(., mifish_reads >0) %>% 
+  dplyr::select(ID_mifish, alpha_group) %>% 
+  distinct() %>% 
+   group_by(alpha_group)  -> unique_species_mock_calcofi2
+
+unique_species_mock_calcofi2 %>% 
+  dplyr::summarise(n_distinct(ID_mifish))
+
+setdiff(alphas_mock$ID_mifish,unique_species_mock_calcofi$ID_mifish)
+setdiff(unique_species_mock_calcofi$ID_mifish,alphas_mock$ID_mifish)
+```
+
+```{r}
+#geom_quasirandom(dodge.width=1, method = "pseudorandom", alpha =0.05)
+
+calcofi_dont %>% 
+  filter(., !is.na(alpha)) %>% 
+  filter(., mifish_reads >0) %>% 
+   mutate(bin=cut(larval_counts, breaks = c(-0.01,0,5, 25, 100,1000),labels=c(0,5, 25, 100,1000))) %>%
+  mutate(., bin=as.character(bin),
+         bin=as.numeric(bin)) %>% 
+  filter(., larval_counts !=0) %>%  
+  ggplot(., aes(x=bin, y=mifish_reads, side = ifelse(alpha_group == "High Alpha", "left", "right"), colour=alpha_group, fill=alpha_group, group=alpha_group)) + 
+  ggdist::stat_dots( dotsize = 1,
+    stackratio = 1,
+    binwidth = .05, alpha=0.5) +
+  ggdist::stat_slab(
+    adjust = 3,
+    width = 0.6, 
+    .width = 0, fill=NA
+  )  +
+scale_colour_manual(values=c(pnw_palette("Bay",3)[1],pnw_palette("Bay",6)[4])) +
+  scale_fill_manual(values=c(pnw_palette("Bay",3)[1],pnw_palette("Bay",6)[4]))+
+  theme_bw() +
+theme(
+panel.background = element_rect(fill = 'white', colour = 'white'),
+panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+axis.text.x = element_text(size = 12),
+axis.text.y = element_text(size = 12, angle = 0),
+axis.title.x =element_text(size = 16,  face = "bold"),
+axis.title.y = element_text(size = 16, face = "bold"),legend.position = "none"
+) + xlab("Larvae Counts") + ylab("Amplicon Reads")+ guides(fill=guide_legend(title="Amplification Efficiency"), colour=guide_legend(title="Amplification Efficiency")) +  scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x),
+              labels = trans_format("log10", math_format(10^.x)))+
+  scale_x_continuous(trans=scales::pseudo_log_trans(base = 10),    
+                                                                                                                                                                                                     breaks=c(0,5, 25, 100,1000),
+                           labels=c(0, 
+                           expression(10^0.7),
+                           expression(10^1.4),
+                           expression(10^2), 
+                           expression(10^3))) -> fig_3a
+
+fig_3a
+
+
+
+ggsave(
+file = here::here("signal2noise","figures", "Figure_3a.png"),
+width = 16,
+height = 8
+)
+
+
+```
+
+```{r}
+
+counts_plus_reads %>% 
+  filter(., !is.na(mifish_reads)) %>% 
+    unite(., Sample_ID, c("station_id","ext_rep","tech_rep"), sep=":",remove="F") %>% 
+  left_join(mifish_tot_reads) %>% 
+  left_join(larvae_tot_counts) %>% 
+  mutate(., prop_reads= mifish_reads/tot_reads,
+         prop_counts=larval_counts/tot_counts) %>% 
+ mutate(larval_abundance = case_when(larval_counts >10  ~ ">10 Larvae",
+                              larval_counts >0  ~ ">0 Larvae",
+                              TRUE ~"No Larvae"))  %>% 
+  filter(., tot_reads >0)-> calcofi_use_all
+
+calcofi_use_all %>% 
+     # filter(larval_counts >0) %>% 
+    group_by(ID_mifish,station_id,ext_rep) %>% 
+ dplyr::summarise(non_na_tech_count = n_distinct(tech_rep),
+    mean_prop_reads = mean(prop_reads),
+    mean_reads = mean(mifish_reads),
+    max_reads = max(mifish_reads),
+    min_reads = min(mifish_reads),
+    larval_counts=mean(larval_counts),
+          Drop_outs = length(mifish_reads[mifish_reads==0]),
+                   max_prop_reads=max(prop_reads),
+                   min_prop_reads=min(prop_reads),
+                   mean_prop_counts = mean(prop_counts),
+                   max_prop_counts=max(prop_counts),
+                   min_prop_counts=min(prop_counts),
+    drop_prop=Drop_outs/non_na_tech_count) %>% 
+  mutate(Drop_outs_cat = case_when(drop_prop ==1 ~"Non Detection",
+                              drop_prop >0.66 ~"2/3rds of reps are zero",
+                              drop_prop >0.49 ~"1/2 of reps are zero",
+                              drop_prop >0.3 ~"1/3 of reps are zero",
+                              min_prop_reads >0 ~"Detected Across all Reps")) -> calcofi_dropout_prop_all
+
+  calcofi_dropout_prop_all %>% 
+  filter(., !is.na(mean_prop_reads)) %>% 
+    mutate(., Species =ID_mifish)-> plotting_drop_outs_all
+  
+```
+
+## Figure 3b
+
+```{r}
+plotting_drop_outs_all %>% 
+    left_join(alphas) %>% 
+    filter(., !is.na(alpha)) %>% 
+   mutate(alpha_group = case_when(alpha >-0.07  ~"High Alpha",
+                              TRUE ~"Low Alpha"))  %>% 
+  filter(., ID_mifish !="MISSING") %>% 
+  filter(., ID_mifish !="Paralepididae") %>% 
+  ggplot(., aes(x=(larval_counts+0.1), y=drop_prop, colour=alpha_group, fill=alpha_group))+
+      geom_count(alpha =0.5) + 
+  scale_size(range = c(2, 12), breaks=c(1,10,100,1000,5000)) +
+  geom_smooth(
+    method="glm",
+    method.args=list(family="binomial"))+ 
+  scale_colour_manual(values=c(pnw_palette("Bay",3)[1],pnw_palette("Bay",6)[4])) +
+  scale_fill_manual(values=c(pnw_palette("Bay",3)[1],pnw_palette("Bay",6)[4])) + 
+  theme(axis.text.x = element_text(angle =30, hjust=1)) +xlab("Larvae Counts") + ylab("Proportion Non-Detect") + theme_bw() +
+theme(
+panel.background = element_rect(fill = 'white', colour = 'white'),
+panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+axis.text.x = element_text(size = 12),
+axis.text.y = element_text(size = 12, angle = 0),
+          strip.text.x=element_text(size=16),
+axis.title.x =element_text(size = 16,  face = "bold"),
+axis.title.y = element_text(size = 16, face = "bold"),
+#legend.position = "none"
+) +facet_wrap(.~alpha_group) + guides(fill=guide_legend(title="Amplification Efficiency"), colour=guide_legend(title="Amplification Efficiency")) +scale_x_log10(limits=c(10^0, 10^3), breaks=10^(0:3),labels=c(expression(10^0),expression(10^1),expression(10^2),expression(10^3)))-> fig_3b
+
+fig_3b
+
+
+ggsave(
+file = here::here("signal2noise","figures", "Figure_b.png"),
+width = 12,
+height = 8
+)
+
+
+
+
+```
+## Figure 3 Combination
+```{r}
+
+fig_3a/fig_3b  + plot_annotation(tag_levels = 'A') + plot_layout(guides = 'collect')
+
+ggsave(
+file = here::here("signal2noise","figures", "Figure_3_combined.png"),
+width = 14,
+height = 8
+)
+```
+
+# Reads per larvae
+
+```{r}
+calcofi_dont %>% 
+  filter(., !is.na(alpha)) %>% 
+   left_join(micro_obs) %>% 
+  filter(., larval_counts > 0) %>% 
+  mutate(., Reads_per_count = mifish_reads/larval_counts) %>% 
+  group_by(alpha_group) %>% 
+  dplyr::summarise(mean(Reads_per_count), max(Reads_per_count), min(Reads_per_count), n_distinct(Species))
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

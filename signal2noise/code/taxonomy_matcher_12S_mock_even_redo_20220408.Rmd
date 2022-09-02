@@ -1,0 +1,112 @@
+---
+title: "MiFish Mock Community"
+author: "Zack Gold"
+date: "4/8/2022"
+output: html_document
+---
+
+
+```{r}
+library(tidyverse)
+library(here)
+library(DECIPHER)
+```
+
+
+```{r}
+input_dna <- read.csv(file =here("signal2noise","data","input_dna_conc_communities_20210103.csv"), sep=",", header=TRUE)
+
+
+ASV_C60_c19 <- read.table(file=here("signal2noise","data","mock_sequences","mock_even_redo","c19_fishcard_ASV_raw_taxonomy_60.txt"), sep = "\t", header=TRUE)
+
+metadata_kenai <- read.table(file=here("signal2noise","data","mock_sequences","mock_even_redo","metadata_kenai1_20220408.csv"), sep = ",", header=TRUE)
+
+metadata_kenai %>% 
+  filter(., str_detect(New_name,"Even")) -> mock_even_samples
+
+ASV_C60_c19 %>% 
+  dplyr::select(fishcard_seq_number,sum.taxonomy, mock_even_samples$Seq_number_2) -> ASV_C60_c19
+  
+
+
+crux_fasta <- readDNAStringSet(file = here("signal2noise","data","mock_sequences","CRUX_DB","global_database","Global_.fasta"))
+crux_taxonomy <- read.table(file = here("signal2noise","data","mock_sequences","CRUX_DB","global_database","Global_taxonomy.txt"), sep="\t")
+
+
+```
+
+
+```{r}
+input_dna %>%  
+  filter(., str_detect(Community, "Coastal_Even")) %>% 
+  dplyr::select(Species) %>%  unique() -> mc31_species
+
+```
+
+#Pull ASVS
+
+```{r}
+
+ASV_C60_c19 %>% 
+  mutate(Tot_reads = rowSums(select(., contains("c19_fishcard")))) %>% 
+  filter(., Tot_reads >0) %>% 
+  dplyr::select(ASV = fishcard_seq_number,Tot_reads, sum.taxonomy) %>% 
+  separate(sum.taxonomy, into = c("Domain","Phylum","Class","Order","Family","Genus","Species"), remove =F, sep=";") %>% 
+  filter(., str_detect(ASV,"merged")) %>% 
+  filter(., !str_detect(ASV,"unmerged"))  -> ASVs_unidentified
+
+
+```
+
+```{r}
+ASVs_unidentified %>% 
+  mutate(., Species = case_when(Species=="Semicossyphus pulcher" ~"Bodianus pulcher",
+                                Species == "Oxyjulis californica"~"Halichoeres californica",
+                                Species == "Symphurus atricaudus"~ "Symphurus atricauda",
+                                Species == "Vinciguerria nimbaria"~ "Vinciguerria lucetia",
+                                Species == "Nannobrachium regale"~ "Nannobrachium ritteri",
+                                Species == "Pseudobatos productus"~ "Rhinobatos productus",
+                                Species == "Tetronarce californica"~ "Torpedo californicus",
+                                Species == "Cheilotrema saturnum"~ "Roncador stearnsii",
+                                Species == "Chromis alta" ~"Tilapia control",
+                                sum.taxonomy == "Eukaryota;Chordata;Actinopteri;;Sciaenidae;;" ~ "Atractoscion nobilis",
+                                sum.taxonomy == "Eukaryota;Chordata;Actinopteri;;;;" ~ "Hypsypops rubicundus",
+                                sum.taxonomy == "Eukaryota;Chordata;Actinopteri;Pleuronectiformes;Pleuronectidae;;" ~ "Hippoglossus stenolepis",
+                                 sum.taxonomy == "Eukaryota;Chordata;Actinopteri;Stomiiformes;Phosichthyidae;Vinciguerria;" ~ "Vinciguerria lucetia",
+                                sum.taxonomy == "Eukaryota;Chordata;Actinopteri;Pleuronectiformes;Pleuronectidae;Pleuronichthys;Pleuronichthys guttulatus" ~ "Hypsopsetta guttulata",
+                          	
+                                Genus =="Sebastes" ~"Sebastes paucispinis",
+                                Species =="Lampanyctus tenuiformis" ~"Nannobrachium ritteri",                                TRUE ~Species)) -> ASVs_fixed
+```
+  
+  
+```{r}
+setdiff(mc31_species$Species,ASVs_fixed$Species)
+setdiff(ASVs_fixed$Species,mc31_species$Species) 
+
+ASVs_unidentified %>% 
+  filter(., Species == "Pleuronichthys ritteri") 
+#contam?
+ASVs_unidentified %>% 
+  filter(., Species == "Genyonemus lineatus") 
+
+ASVs_unidentified %>% 
+  filter(., Class == "Chondrichthyes") %>% 
+  filter(., )
+
+
+
+```
+
+
+```{r}
+
+ASVs_fixed %>% 
+  dplyr::select(-sum.taxonomy) %>% 
+  unite("sum.taxonomy", c("Domain","Phylum","Class","Order","Family","Genus","Species"), remove =F, sep=";") %>% 
+  dplyr::select(ASV,sum.taxonomy) -> hash.key_updated_c19
+
+saveRDS(hash.key_updated_c19, file=here("signal2noise","data","mock_sequences","hash.key_updated_c19.RDS"))
+```
+
+

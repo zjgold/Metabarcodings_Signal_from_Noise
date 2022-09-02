@@ -1,0 +1,127 @@
+Seq_number,Seq_number_2,Temp. Field Bottle ID,Sample_date,LabID,Sample_ID,Month,New_name,Site_code,Site,Bio_rep,Depth_code,Depth,Tech_rep,PCR_Cycles,Index Cycles,Project,Sample_Control,Control_Type,Date_Sampled,River
+Kenai.seqrun1.001.S1.L001,c19_fishcard_Kenai.seqrun1.001.S1.L001,"2, 1A",11/14/20,52386_08-09,Kenai_seqrun1_001,Nov.20,Bridge_Surface_Nov.20_1,2,Bridge,1,A,Surface,NA,39,8,Kenai,Sample,NA,14-Nov,Kenai
+Kenai.seqrun1.002.S2.L001,c19_fishcard_Kenai.seqrun1.002.S2.L001,"2, 1A",5/29/21,52386_107-213,Kenai_seqrun1_002,May,Bridge_Surface_May_1,2,Bridge,1,A,Surface,NA,39,8,Kenai,Sample,NA,29-May,Kenai
+Kenai.seqrun1.003.S3.L001,c19_fishcard_Kenai.seqrun1.003.S3.L001,"2, 2A",5/29/21,52386_108-214,Kenai_seqrun1_003,May,Bridge_Surface_May_2,2,Bridge,2,A,Surface,NA,39,8,Kenai,Sample,NA,29-May,Kenai
+Kenai.seqrun1.004.S4.L001,c19_fishcard_Kenai.seqrun1.004.S4.L001,"2, 3A",5/29/21,52386_110-199,Kenai_seqrun1_004,May,Bridge_Surface_May_3,2,Bridge,3,A,Surface,NA,39,8,Kenai,Sample,NA,29-May,Kenai
+Kenai.seqrun1.005.S5.L001,c19_fishcard_Kenai.seqrun1.005.S5.L001,"2, 2B",11/14/20,52386_12-128,Kenai_seqrun1_005,Nov.20,Bridge_5m_Nov.20_2,2,Bridge,2,B,5m,NA,39,8,Kenai,Sample,NA,14-Nov,Kenai
+Kenai.seqrun1.006.S6.L001,c19_fishcard_Kenai.seqrun1.006.S6.L001,"2, 1A",7/24/21,52386_136-200,Kenai_seqrun1_006,Jul,Bridge_Surface_Jul_1,2,Bridge,1,A,Surface,NA,39,8,Kenai,Sample,NA,24-Jul,Kenai
+Kenai.seqrun1.007.S7.L001,c19_fishcard_Kenai.seqrun1.007.S7.L001,"2, 2A",7/24/21,52386_137-201,Kenai_seqrun1_007,Jul,Bridge_Surface_Jul_2,2,Bridge,2,A,Surface,NA,39,8,Kenai,Sample,NA,24-Jul,Kenai
+Kenai.seqrun1.008.S8.L001,c19_fishcard_Kenai.seqrun1.008.S8.L001,"2, 3A",7/24/21,52386_138-215,Kenai_seqrun1_008,Jul,Bridge_Surface_Jul_3,2,Bridge,3,A,Surface,NA,39,8,Kenai,Sample,NA,24-Jul,Kenai
+Kenai.seqrun1.009.S9.L001,c19_fishcard_Kenai.seqrun1.009.S9.L001,"2, 1A",8/8/21,52386_150-216,Kenai_seqrun1_009,Aug,Bridge_Surface_Aug_1,2,Bridge,1,A,Surface,NA,39,8,Kenai,Sample,NA,8-Aug,Kenai
+Kenai.seqrun1.010.S10.L001,c19_fishcard_Kenai.seqrun1.010.S10.L001,"2, 2A",8/8/21,52386_151-217,Kenai_seqrun1_010,Aug,Bridge_Surface_Aug_2,2,Bridge,2,A,Surface,NA,39,8,Kenai,Sample,NA,8-Aug,Kenai
+Kenai.seqrun1.011.S11.L001,c19_fishcard_Kenai.seqrun1.011.S11.L001,"2, 3A",8/8/21,52386_152-218,Kenai_seqrun1_011,Aug,Bridge_Surface_Aug_3,2,Bridge,3,A,Surface,NA,39,8,Kenai,Sample,NA,8-Aug,Kenai
+Kenai.seqrun1.012.S12.L001,c19_fishcard_Kenai.seqrun1.012.S12.L001,"2, 1B",8/8/21,52386_153-219,Kenai_seqrun1_012,Aug,Bridge_5m_Aug_1,2,Bridge,1,B,5m,NA,39,8,Kenai,Sample,NA,8-Aug,Kenai
+Kenai.seqrun1.013.S13.L001,c19_fishcard_Kenai.seqrun1.013.S13.L001,"2, 2B",8/8/21,52386_154-195,Kenai_seqrun1_013,Aug,Bridge_5m_Aug_2,2,Bridge,2,B,5m,NA,39,8,Kenai,Sample,NA,8-Aug,Kenai
+Kenai.seqrun1.014.S14.L001,c19_fishcard_Kenai.seqrun1.014.S14.L001,"2, 3B",8/8/21,52386_155-196,Kenai_seqrun1_014,Aug,Bridge_5m_Aug_3,2,Bridge,3,B,5m,NA,39,8,Kenai,Sample,NA,8-Aug,Kenai
+Kenai.seqrun1.015.S15.L001,c19_fishcard_Kenai.seqrun1.015.S15.L001,"1,1B",1/23/21,52386_47-142,Kenai_seqrun1_015,Jan,Dock_5m_Jan_1,1,Dock,1,B,5m,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.016.S16.L001,c19_fishcard_Kenai.seqrun1.016.S16.L001,"1,2B",1/23/21,52386_48-202,Kenai_seqrun1_016,Jan,Dock_5m_Jan_2,1,Dock,2,B,5m,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.017.S17.L001,c19_fishcard_Kenai.seqrun1.017.S17.L001,"2, 1A",2/26/21,52386_65-203,Kenai_seqrun1_017,Feb,Bridge_Surface_Feb_1,2,Bridge,1,A,Surface,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.018.S18.L001,c19_fishcard_Kenai.seqrun1.018.S18.L001,"2, 2A",2/26/21,52386_66-204,Kenai_seqrun1_018,Feb,Bridge_Surface_Feb_2,2,Bridge,2,A,Surface,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.019.S19.L001,c19_fishcard_Kenai.seqrun1.019.S19.L001,"1, 3A",4/24/21,52386_89-205,Kenai_seqrun1_019,Apr,Dock_Surface_Apr_3,1,Dock,3,A,Surface,NA,39,8,Kenai,Sample,NA,24-Apr,Kenai
+Kenai.seqrun1.020.S20.L001,c19_fishcard_Kenai.seqrun1.020.S20.L001,"1, 1B",4/24/21,52386_90-206,Kenai_seqrun1_020,Apr,Dock_5m_Apr_1,1,Dock,1,B,5m,NA,39,8,Kenai,Sample,NA,24-Apr,Kenai
+Kenai.seqrun1.021.S21.L001,c19_fishcard_Kenai.seqrun1.021.S21.L001,"2, 1B",4/24/21,52386_96-207-8-9,Kenai_seqrun1_021,Apr,Bridge_5m_Apr_1,2,Bridge,1,B,5m,NA,39,8,Kenai,Sample,NA,24-Apr,Kenai
+Kenai.seqrun1.022.S22.L001,c19_fishcard_Kenai.seqrun1.022.S22.L001,"2, 2B",4/24/21,52386_98-212,Kenai_seqrun1_022,Apr,Bridge_5m_Apr_2,2,Bridge,2,B,5m,NA,39,8,Kenai,Sample,NA,24-Apr,Kenai
+Kenai.seqrun1.023.S23.L001,c19_fishcard_Kenai.seqrun1.023.S23.L001,"2, 3B",4/24/21,52386_99-210-11,Kenai_seqrun1_023,Apr,Bridge_5m_Apr_3,2,Bridge,3,B,5m,NA,39,8,Kenai,Sample,NA,24-Apr,Kenai
+Kenai.seqrun1.024.S24.L001,c19_fishcard_Kenai.seqrun1.024.S24.L001,"1,1A",11/14/20,52386_002,Kenai_seqrun1_024,Nov.20,Dock_Surface_Nov.20_1,1,Dock,1,A,Surface,NA,39,8,Kenai,Sample,NA,14-Nov,Kenai
+Kenai.seqrun1.025.S25.L001,c19_fishcard_Kenai.seqrun1.025.S25.L001,"1, 2A",11/14/20,52386_003,Kenai_seqrun1_025,Nov.20,Dock_Surface_Nov.20_2,1,Dock,2,A,Surface,NA,39,8,Kenai,Sample,NA,14-Nov,Kenai
+Kenai.seqrun1.026.S26.L001,c19_fishcard_Kenai.seqrun1.026.S26.L001,"1, 3A",11/14/20,52386_004,Kenai_seqrun1_026,Nov.20,Dock_Surface_Nov.20_3,1,Dock,3,A,Surface,NA,39,8,Kenai,Sample,NA,14-Nov,Kenai
+Kenai.seqrun1.027.S27.L001,c19_fishcard_Kenai.seqrun1.027.S27.L001,"1, 1B",11/14/20,52386_005,Kenai_seqrun1_027,Nov.20,Dock_5m_Nov.20_1,1,Dock,1,B,5m,NA,39,8,Kenai,Sample,NA,14-Nov,Kenai
+Kenai.seqrun1.028.S28.L001,c19_fishcard_Kenai.seqrun1.028.S28.L001,"1, 2B",11/14/20,52386_006,Kenai_seqrun1_028,Nov.20,Dock_5m_Nov.20_2,1,Dock,2,B,5m,NA,39,8,Kenai,Sample,NA,14-Nov,Kenai
+Kenai.seqrun1.029.S29.L001,c19_fishcard_Kenai.seqrun1.029.S29.L001,"1, 3B",11/14/20,52386_007,Kenai_seqrun1_029,Nov.20,Dock_5m_Nov.20_3,1,Dock,3,B,5m,NA,39,8,Kenai,Sample,NA,14-Nov,Kenai
+Kenai.seqrun1.030.S30.L001,c19_fishcard_Kenai.seqrun1.030.S30.L001,"2, 3A",11/14/20,52386_010,Kenai_seqrun1_030,Nov.20,Bridge_Surface_Nov.20_3,2,Bridge,3,A,Surface,NA,39,8,Kenai,Sample,NA,14-Nov,Kenai
+Kenai.seqrun1.031.S31.L001,c19_fishcard_Kenai.seqrun1.031.S31.L001,"2, 1B",11/14/20,52386_011,Kenai_seqrun1_031,Nov.20,Bridge_5m_Nov.20_1,2,Bridge,1,B,5m,NA,39,8,Kenai,Sample,NA,14-Nov,Kenai
+Kenai.seqrun1.032.S32.L001,c19_fishcard_Kenai.seqrun1.032.S32.L001,"2, 3B",11/14/20,52386_014,Kenai_seqrun1_032,Nov.20,Bridge_5m_Nov.20_3,2,Bridge,3,B,5m,NA,39,8,Kenai,Sample,NA,14-Nov,Kenai
+Kenai.seqrun1.033.S33.L001,c19_fishcard_Kenai.seqrun1.033.S33.L001,"1,1A",11/25/20,52386_016,Kenai_seqrun1_033,Nov.202,Dock_Surface_Nov.202_1,1,Dock,1,A,Surface,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.034.S34.L001,c19_fishcard_Kenai.seqrun1.034.S34.L001,"1, 2A",11/25/20,52386_017,Kenai_seqrun1_034,Nov.202,Dock_Surface_Nov.202_2,1,Dock,2,A,Surface,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.035.S35.L001,c19_fishcard_Kenai.seqrun1.035.S35.L001,"1, 3A",11/25/20,52386_018,Kenai_seqrun1_035,Nov.202,Dock_Surface_Nov.202_3,1,Dock,3,A,Surface,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.036.S36.L001,c19_fishcard_Kenai.seqrun1.036.S36.L001,"1, 1B",11/25/20,52386_019,Kenai_seqrun1_036,Nov.202,Dock_5m_Nov.202_1,1,Dock,1,B,5m,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.037.S37.L001,c19_fishcard_Kenai.seqrun1.037.S37.L001,"1, 2B",11/25/20,52386_020,Kenai_seqrun1_037,Nov.202,Dock_5m_Nov.202_2,1,Dock,2,B,5m,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.038.S38.L001,c19_fishcard_Kenai.seqrun1.038.S38.L001,"1, 3B",11/25/20,52386_021,Kenai_seqrun1_038,Nov.202,Dock_5m_Nov.202_3,1,Dock,3,B,5m,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.039.S39.L001,c19_fishcard_Kenai.seqrun1.039.S39.L001,"2, 1A",11/25/20,52386_022,Kenai_seqrun1_039,Nov.202,Bridge_Surface_Nov.202_1,2,Bridge,1,A,Surface,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.040.S40.L001,c19_fishcard_Kenai.seqrun1.040.S40.L001,"2, 2A",11/25/20,52386_023,Kenai_seqrun1_040,Nov.202,Bridge_Surface_Nov.202_2,2,Bridge,2,A,Surface,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.041.S41.L001,c19_fishcard_Kenai.seqrun1.041.S41.L001,"2, 3A",11/25/20,52386_024,Kenai_seqrun1_041,Nov.202,Bridge_Surface_Nov.202_3,2,Bridge,3,A,Surface,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.042.S42.L001,c19_fishcard_Kenai.seqrun1.042.S42.L001,"2, 1B",11/25/20,52386_026,Kenai_seqrun1_042,Nov.202,Bridge_5m_Nov.202_1,2,Bridge,1,B,5m,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.043.S43.L001,c19_fishcard_Kenai.seqrun1.043.S43.L001,"2, 2B",11/25/20,52386_027,Kenai_seqrun1_043,Nov.202,Bridge_5m_Nov.202_2,2,Bridge,2,B,5m,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.044.S44.L001,c19_fishcard_Kenai.seqrun1.044.S44.L001,"2, 3B",11/25/20,52386_028,Kenai_seqrun1_044,Nov.202,Bridge_5m_Nov.202_3,2,Bridge,3,B,5m,NA,39,8,Kenai,Sample,NA,25-Nov,Kenai
+Kenai.seqrun1.045.S45.L001,c19_fishcard_Kenai.seqrun1.045.S45.L001,"1,1A",12/28/20,52386_030,Kenai_seqrun1_045,Dec,Dock_Surface_Dec_1_1,1,Dock,1,A,Surface,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.046.S46.L001,c19_fishcard_Kenai.seqrun1.046.S46.L001,"1, 2A",12/28/20,52386_031,Kenai_seqrun1_046,Dec,Dock_Surface_Dec_2_1,1,Dock,2,A,Surface,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.047.S47.L001,c19_fishcard_Kenai.seqrun1.047.S47.L001,"1, 3A",12/28/20,52386_032,Kenai_seqrun1_047,Dec,Dock_Surface_Dec_3_1,1,Dock,3,A,Surface,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.048.S48.L001,c19_fishcard_Kenai.seqrun1.048.S48.L001,"1, 1B",12/28/20,52386_033,Kenai_seqrun1_048,Dec,Dock_5m_Dec_1_1,1,Dock,1,B,5m,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.049.S49.L001,c19_fishcard_Kenai.seqrun1.049.S49.L001,"1, 2B",12/28/20,52386_034,Kenai_seqrun1_049,Dec,Dock_5m_Dec_2_1,1,Dock,2,B,5m,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.050.S50.L001,c19_fishcard_Kenai.seqrun1.050.S50.L001,"1, 3B",12/28/20,52386_035,Kenai_seqrun1_050,Dec,Dock_5m_Dec_3_1,1,Dock,3,B,5m,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.051.S51.L001,c19_fishcard_Kenai.seqrun1.051.S51.L001,"2, 1A",12/28/20,52386_036,Kenai_seqrun1_051,Dec,Bridge_Surface_Dec_1_1,2,Bridge,1,A,Surface,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.052.S52.L001,c19_fishcard_Kenai.seqrun1.052.S52.L001,"2, 2A",12/28/20,52386_038,Kenai_seqrun1_052,Dec,Bridge_Surface_Dec_2_1,2,Bridge,2,A,Surface,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.053.S53.L001,c19_fishcard_Kenai.seqrun1.053.S53.L001,"2, 3A",12/28/20,52386_039,Kenai_seqrun1_053,Dec,Bridge_Surface_Dec_3_1,2,Bridge,3,A,Surface,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.054.S54.L001,c19_fishcard_Kenai.seqrun1.054.S54.L001,"2, 1B",12/28/20,52386_040,Kenai_seqrun1_054,Dec,Bridge_5m_Dec_1_1,2,Bridge,1,B,5m,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.055.S55.L001,c19_fishcard_Kenai.seqrun1.055.S55.L001,"2, 2B",12/28/20,52386_041,Kenai_seqrun1_055,Dec,Bridge_5m_Dec_2_1,2,Bridge,2,B,5m,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.056.S56.L001,c19_fishcard_Kenai.seqrun1.056.S56.L001,"2, 3B",12/28/20,52386_042,Kenai_seqrun1_056,Dec,Bridge_5m_Dec_3_1,2,Bridge,3,B,5m,1,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.057.S57.L001,c19_fishcard_Kenai.seqrun1.057.S57.L001,"1,1A",1/23/21,52386_044,Kenai_seqrun1_057,Jan,Dock_Surface_Jan_1,1,Dock,1,A,Surface,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.058.S58.L001,c19_fishcard_Kenai.seqrun1.058.S58.L001,"1,2A",1/23/21,52386_045,Kenai_seqrun1_058,Jan,Dock_Surface_Jan_2,1,Dock,2,A,Surface,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.059.S59.L001,c19_fishcard_Kenai.seqrun1.059.S59.L001,"1,3A",1/23/21,52386_046,Kenai_seqrun1_059,Jan,Dock_Surface_Jan_3,1,Dock,3,A,Surface,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.060.S60.L001,c19_fishcard_Kenai.seqrun1.060.S60.L001,"1,3B",1/23/21,52386_050,Kenai_seqrun1_060,Jan,Dock_5m_Jan_3,1,Dock,3,B,5m,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.061.S61.L001,c19_fishcard_Kenai.seqrun1.061.S61.L001,"2,1A",1/23/21,52386_051,Kenai_seqrun1_061,Jan,Bridge_Surface_Jan_1,2,Bridge,1,A,Surface,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.062.S62.L001,c19_fishcard_Kenai.seqrun1.062.S62.L001,"2,2A",1/23/21,52386_052,Kenai_seqrun1_062,Jan,Bridge_Surface_Jan_2,2,Bridge,2,A,Surface,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.063.S63.L001,c19_fishcard_Kenai.seqrun1.063.S63.L001,"2,3A",1/23/21,52386_053,Kenai_seqrun1_063,Jan,Bridge_Surface_Jan_3,2,Bridge,3,A,Surface,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.064.S64.L001,c19_fishcard_Kenai.seqrun1.064.S64.L001,"2,1B",1/23/21,52386_054,Kenai_seqrun1_064,Jan,Bridge_5m_Jan_1,2,Bridge,1,B,5m,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.065.S65.L001,c19_fishcard_Kenai.seqrun1.065.S65.L001,"2,2B",1/23/21,52386_055,Kenai_seqrun1_065,Jan,Bridge_5m_Jan_2,2,Bridge,2,B,5m,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.066.S66.L001,c19_fishcard_Kenai.seqrun1.066.S66.L001,"2,3B",1/23/21,52386_056,Kenai_seqrun1_066,Jan,Bridge_5m_Jan_3,2,Bridge,3,B,5m,NA,39,8,Kenai,Sample,NA,23-Jan,Kenai
+Kenai.seqrun1.067.S67.L001,c19_fishcard_Kenai.seqrun1.067.S67.L001,"1, 1A",2/26/21,52386_058,Kenai_seqrun1_067,Feb,Dock_Surface_Feb_1,1,Dock,1,A,Surface,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.068.S68.L001,c19_fishcard_Kenai.seqrun1.068.S68.L001,"1,2A",2/26/21,52386_059,Kenai_seqrun1_068,Feb,Dock_Surface_Feb_2,1,Dock,2,A,Surface,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.069.S69.L001,c19_fishcard_Kenai.seqrun1.069.S69.L001,"1, 3A",2/26/21,52386_060,Kenai_seqrun1_069,Feb,Dock_Surface_Feb_3,1,Dock,3,A,Surface,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.070.S70.L001,c19_fishcard_Kenai.seqrun1.070.S70.L001,"1, 1B",2/26/21,52386_062,Kenai_seqrun1_070,Feb,Dock_5m_Feb_1,1,Dock,1,B,5m,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.071.S71.L001,c19_fishcard_Kenai.seqrun1.071.S71.L001,"1, 2B",2/26/21,52386_063,Kenai_seqrun1_071,Feb,Dock_5m_Feb_2,1,Dock,2,B,5m,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.072.S72.L001,c19_fishcard_Kenai.seqrun1.072.S72.L001,"1, 3B",2/26/21,52386_064,Kenai_seqrun1_072,Feb,Dock_5m_Feb_3,1,Dock,3,B,5m,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.073.S73.L001,c19_fishcard_Kenai.seqrun1.073.S73.L001,"2, 3A",2/26/21,52386_067,Kenai_seqrun1_073,Feb,Bridge_Surface_Feb_3,2,Bridge,3,A,Surface,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.074.S74.L001,c19_fishcard_Kenai.seqrun1.074.S74.L001,"2, 1B",2/26/21,52386_068,Kenai_seqrun1_074,Feb,Bridge_5m_Feb_1,2,Bridge,1,B,5m,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.075.S75.L001,c19_fishcard_Kenai.seqrun1.075.S75.L001,"2, 2B",2/26/21,52386_069,Kenai_seqrun1_075,Feb,Bridge_5m_Feb_2,2,Bridge,2,B,5m,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.076.S76.L001,c19_fishcard_Kenai.seqrun1.076.S76.L001,"2, 3B",2/26/21,52386_070,Kenai_seqrun1_076,Feb,Bridge_5m_Feb_3,2,Bridge,3,B,5m,NA,39,8,Kenai,Sample,NA,26-Feb,Kenai
+Kenai.seqrun1.077.S77.L001,c19_fishcard_Kenai.seqrun1.077.S77.L001,"1,1A",3/28/21,52386_072,Kenai_seqrun1_077,Mar,Dock_Surface_Mar_1,1,Dock,1,A,Surface,NA,39,8,Kenai,Sample,NA,28-Mar,Kenai
+Kenai.seqrun1.078.S78.L001,c19_fishcard_Kenai.seqrun1.078.S78.L001,"1, 2A",3/28/21,52386_074,Kenai_seqrun1_078,Mar,Dock_Surface_Mar_2,1,Dock,2,A,Surface,NA,39,8,Kenai,Sample,NA,28-Mar,Kenai
+Kenai.seqrun1.079.S79.L001,c19_fishcard_Kenai.seqrun1.079.S79.L001,"1, 3A",3/28/21,52386_075,Kenai_seqrun1_079,Mar,Dock_Surface_Mar_3,1,Dock,3,A,Surface,NA,39,8,Kenai,Sample,NA,28-Mar,Kenai
+Kenai.seqrun1.080.S80.L001,c19_fishcard_Kenai.seqrun1.080.S80.L001,"1, 1B",3/28/21,52386_076,Kenai_seqrun1_080,Mar,Dock_5m_Mar_1,1,Dock,1,B,5m,NA,39,8,Kenai,Sample,NA,28-Mar,Kenai
+Kenai.seqrun1.081.S81.L001,c19_fishcard_Kenai.seqrun1.081.S81.L001,"1, 2B",3/28/21,52386_077,Kenai_seqrun1_081,Mar,Dock_5m_Mar_2,1,Dock,2,B,5m,NA,39,8,Kenai,Sample,NA,28-Mar,Kenai
+Kenai.seqrun1.082.S82.L001,c19_fishcard_Kenai.seqrun1.082.S82.L001,"1, 3B",3/28/21,52386_078,Kenai_seqrun1_082,Mar,Dock_5m_Mar_3,1,Dock,3,B,5m,NA,39,8,Kenai,Sample,NA,28-Mar,Kenai
+Kenai.seqrun1.083.S83.L001,c19_fishcard_Kenai.seqrun1.083.S83.L001,"2, 1A",3/28/21,52386_079,Kenai_seqrun1_083,Mar,Bridge_Surface_Mar_1,2,Bridge,1,A,Surface,NA,39,8,Kenai,Sample,NA,28-Mar,Kenai
+Kenai.seqrun1.084.S84.L001,c19_fishcard_Kenai.seqrun1.084.S84.L001,"2, 2A",3/28/21,52386_080,Kenai_seqrun1_084,Mar,Bridge_Surface_Mar_2,2,Bridge,2,A,Surface,NA,39,8,Kenai,Sample,NA,28-Mar,Kenai
+Kenai.seqrun1.085.S85.L001,c19_fishcard_Kenai.seqrun1.085.S85.L001,"2, 3A",3/28/21,52386_081,Kenai_seqrun1_085,Mar,Bridge_Surface_Mar_3,2,Bridge,3,A,Surface,NA,39,8,Kenai,Sample,NA,28-Mar,Kenai
+Kenai.seqrun1.086.S86.L001,c19_fishcard_Kenai.seqrun1.086.S86.L001,K_TM_D13MK_01,9/3/21,52385_118,Kenai_seqrun1_086,Sep,TM_D13MK_01,20M,20M,1,NA,NA,NA,39,8,20M,Sample,NA,3-Sep,Twentymile
+Kenai.seqrun1.087.S87.L001,c19_fishcard_Kenai.seqrun1.087.S87.L001,K_TM_D13MK_02,9/3/21,52385_119,Kenai_seqrun1_087,Sep,TM_D13MK_02,20M,20M,2,NA,NA,NA,39,8,20M,Sample,NA,3-Sep,Twentymile
+Kenai.seqrun1.088.S88.L001,c19_fishcard_Kenai.seqrun1.088.S88.L001,K_TM_D13MK_03,9/3/21,52385_120,Kenai_seqrun1_088,Sep,TM_D13MK_03,20M,20M,3,NA,NA,NA,39,8,20M,Sample,NA,3-Sep,Twentymile
+Kenai.seqrun1.089.S89.L001,c19_fishcard_Kenai.seqrun1.089.S89.L001,K_TM_D16MK_01,10/3/21,52385_130,Kenai_seqrun1_089,Oct,TM_D16MK_01,20M,20M,1,NA,NA,NA,39,8,20M,Sample,NA,3-Oct,Twentymile
+Kenai.seqrun1.090.S90.L001,c19_fishcard_Kenai.seqrun1.090.S90.L001,K_TM_D16MK_02,10/3/21,52385_131,Kenai_seqrun1_090,Oct,TM_D16MK_02,20M,20M,2,NA,NA,NA,39,8,20M,Sample,NA,3-Oct,Twentymile
+Kenai.seqrun1.091.S91.L001,c19_fishcard_Kenai.seqrun1.091.S91.L001,K_TM_D16MK_03,10/3/21,52385_132,Kenai_seqrun1_091,Oct,TM_D16MK_03,20M,20M,3,NA,NA,NA,39,8,20M,Sample,NA,3-Oct,Twentymile
+Kenai.seqrun1.092.S92.L001,c19_fishcard_Kenai.seqrun1.092.S92.L001,K_TM_D18MK_01,10/21/21,52385_138,Kenai_seqrun1_092,Oct.2,TM_D18MK_01,20M,20M,1,NA,NA,NA,39,8,20M,Sample,NA,21-Oct,Twentymile
+Kenai.seqrun1.093.S93.L001,c19_fishcard_Kenai.seqrun1.093.S93.L001,K_TM_D18MK_02,10/21/21,52385_139,Kenai_seqrun1_093,Oct.2,TM_D18MK_02,20M,20M,2,NA,NA,NA,39,8,20M,Sample,NA,21-Oct,Twentymile
+Kenai.seqrun1.094.S94.L001,c19_fishcard_Kenai.seqrun1.094.S94.L001,K_TM_D18MK_03,10/21/21,52385_140,Kenai_seqrun1_094,Oct.2,TM_D18MK_03,20M,20M,3,NA,NA,NA,39,8,20M,Sample,NA,21-Oct,Twentymile
+Kenai.seqrun1.095.S95.L001,c19_fishcard_Kenai.seqrun1.095.S95.L001,Tilapia,NA,NA,Kenai_seqrun1_095,NA,Tilapia,NA,NA,NA,NA,NA,NA,39,8,NA,Control,Pos,NA,NA
+Kenai.seqrun1.096.S96.L001,c19_fishcard_Kenai.seqrun1.096.S96.L001,Black_tuna,NA,NA,Kenai_seqrun1_096,NA,Black_tuna,NA,NA,NA,NA,NA,NA,39,8,NA,Control,Pos,NA,NA
+Kenai.seqrun1.097.S97.L001,c19_fishcard_Kenai.seqrun1.097.S97.L001,"1, 1B",12/28/20,52386_033,Kenai_seqrun1_097,Dec,Dock_5m_Dec_1_2,1,Dock,1,B,5m,2,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.098.S98.L001,c19_fishcard_Kenai.seqrun1.098.S98.L001,"1, 2B",12/28/20,52386_034,Kenai_seqrun1_098,Dec,Dock_5m_Dec_2_2,1,Dock,2,B,5m,2,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.099.S99.L001,c19_fishcard_Kenai.seqrun1.099.S99.L001,"1, 3B",12/28/20,52386_035,Kenai_seqrun1_099,Dec,Dock_5m_Dec_3_2,1,Dock,3,B,5m,2,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.100.S100.L001,c19_fishcard_Kenai.seqrun1.100.S100.L001,"1, 1B",12/28/20,52386_033,Kenai_seqrun1_100,Dec,Dock_5m_Dec_1_3,1,Dock,1,B,5m,3,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.101.S101.L001,c19_fishcard_Kenai.seqrun1.101.S101.L001,"1, 2B",12/28/20,52386_034,Kenai_seqrun1_101,Dec,Dock_5m_Dec_2_3,1,Dock,2,B,5m,3,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.102.S102.L001,c19_fishcard_Kenai.seqrun1.102.S102.L001,"1, 3B",12/28/20,52386_035,Kenai_seqrun1_102,Dec,Dock_5m_Dec_3_3,1,Dock,3,B,5m,3,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.103.S103.L001,c19_fishcard_Kenai.seqrun1.103.S103.L001,"2, 1A",12/28/20,52386_036,Kenai_seqrun1_103,Dec,Bridge_Surface_Dec_1_2,2,Bridge,1,A,Surface,2,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.104.S104.L001,c19_fishcard_Kenai.seqrun1.104.S104.L001,"2, 2A",12/28/20,52386_038,Kenai_seqrun1_104,Dec,Bridge_Surface_Dec_2_2,2,Bridge,2,A,Surface,2,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.105.S105.L001,c19_fishcard_Kenai.seqrun1.105.S105.L001,"2, 3A",12/28/20,52386_039,Kenai_seqrun1_105,Dec,Bridge_Surface_Dec_3_2,2,Bridge,3,A,Surface,2,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.106.S106.L001,c19_fishcard_Kenai.seqrun1.106.S106.L001,"2, 1B",12/28/20,52386_040,Kenai_seqrun1_106,Dec,Bridge_5m_Dec_1_2,2,Bridge,1,B,5m,2,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.107.S107.L001,c19_fishcard_Kenai.seqrun1.107.S107.L001,"2, 2B",12/28/20,52386_041,Kenai_seqrun1_107,Dec,Bridge_5m_Dec_2_2,2,Bridge,2,B,5m,2,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.108.S108.L001,c19_fishcard_Kenai.seqrun1.108.S108.L001,"2, 3B",12/28/20,52386_042,Kenai_seqrun1_108,Dec,Bridge_5m_Dec_3_2,2,Bridge,3,B,5m,2,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.109.S109.L001,c19_fishcard_Kenai.seqrun1.109.S109.L001,"2, 1A",12/28/20,52386_036,Kenai_seqrun1_109,Dec,Bridge_Surface_Dec_1_3,2,Bridge,1,A,Surface,3,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.110.S110.L001,c19_fishcard_Kenai.seqrun1.110.S110.L001,"2, 2A",12/28/20,52386_038,Kenai_seqrun1_110,Dec,Bridge_Surface_Dec_2_3,2,Bridge,2,A,Surface,3,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.111.S111.L001,c19_fishcard_Kenai.seqrun1.111.S111.L001,"2, 3A",12/28/20,52386_039,Kenai_seqrun1_111,Dec,Bridge_Surface_Dec_3_3,2,Bridge,3,A,Surface,3,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.112.S112.L001,c19_fishcard_Kenai.seqrun1.112.S112.L001,"2, 1B",12/28/20,52386_040,Kenai_seqrun1_112,Dec,Bridge_5m_Dec_1_3,2,Bridge,1,B,5m,3,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.113.S113.L001,c19_fishcard_Kenai.seqrun1.113.S113.L001,"2, 2B",12/28/20,52386_041,Kenai_seqrun1_113,Dec,Bridge_5m_Dec_2_3,2,Bridge,2,B,5m,3,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.114.S114.L001,c19_fishcard_Kenai.seqrun1.114.S114.L001,"2, 3B",12/28/20,52386_042,Kenai_seqrun1_114,Dec,Bridge_5m_Dec_3_3,2,Bridge,3,B,5m,3,39,8,Kenai,Sample,NA,28-Dec,Kenai
+Kenai.seqrun1.115.S115.L001,c19_fishcard_Kenai.seqrun1.115.S115.L001,Coastal_Even_e5_01,NA,NA,Kenai_seqrun1_115,NA,Coastal_Even_e5_01,NA,NA,1,NA,5m,1,39,8,Mock,NA,NA,NA,NA
+Kenai.seqrun1.116.S116.L001,c19_fishcard_Kenai.seqrun1.116.S116.L001,Coastal_Even_e5_02,NA,NA,Kenai_seqrun1_116,NA,Coastal_Even_e5_02,NA,NA,2,NA,5m,2,39,8,Mock,NA,NA,NA,NA
+Kenai.seqrun1.117.S117.L001,c19_fishcard_Kenai.seqrun1.117.S117.L001,Coastal_Even_e5_03,NA,NA,Kenai_seqrun1_117,NA,Coastal_Even_e5_03,NA,NA,3,NA,5m,3,39,8,Mock,NA,NA,NA,NA
+Kenai.seqrun1.118.S118.L001,c19_fishcard_Kenai.seqrun1.118.S118.L001,Coastal_Even_e4_01,NA,NA,Kenai_seqrun1_118,NA,Coastal_Even_e4_01,NA,NA,1,NA,4m,1,39,8,Mock,NA,NA,NA,NA
+Kenai.seqrun1.119.S119.L001,c19_fishcard_Kenai.seqrun1.119.S119.L001,Coastal_Even_e4_02,NA,NA,Kenai_seqrun1_119,NA,Coastal_Even_e4_02,NA,NA,2,NA,4m,2,39,8,Mock,NA,NA,NA,NA
+Kenai.seqrun1.120.S120.L001,c19_fishcard_Kenai.seqrun1.120.S120.L001,Coastal_Even_e4_03,NA,NA,Kenai_seqrun1_120,NA,Coastal_Even_e4_03,NA,NA,3,NA,4m,3,39,8,Mock,NA,NA,NA,NA
+Kenai.seqrun1.121.S121.L001,c19_fishcard_Kenai.seqrun1.121.S121.L001,Neg_plate_3,NA,52386_003,Kenai_seqrun1_121,NA,Neg_plate_3,NA,NA,NA,NA,NA,NA,39,8,NA,Control,Neg,NA,NA
+Kenai.seqrun1.122.S122.L001,c19_fishcard_Kenai.seqrun1.122.S122.L001,Neg_plate_7,NA,52386_007,Kenai_seqrun1_122,NA,Neg_plate_7,NA,NA,NA,NA,NA,NA,39,8,NA,Control,Neg,NA,NA
+Kenai.seqrun1.123.S123.L001,c19_fishcard_Kenai.seqrun1.123.S123.L001,Neg_plate_14,NA,52386_014,Kenai_seqrun1_123,NA,Neg_plate_14,NA,NA,NA,NA,NA,NA,39,8,NA,Control,Neg,NA,NA
+Kenai.seqrun1.124.S124.L001,c19_fishcard_Kenai.seqrun1.124.S124.L001,Neg_plate_14,NA,52386_016,Kenai_seqrun1_124,NA,Neg_plate_14,NA,NA,NA,NA,NA,NA,39,8,NA,Control,Neg,NA,NA
+Kenai.seqrun1.125.S125.L001,c19_fishcard_Kenai.seqrun1.125.S125.L001,Neg_plate_21,NA,52386_021,Kenai_seqrun1_125,NA,Neg_plate_21,NA,NA,NA,NA,NA,NA,39,8,NA,Control,Neg,NA,NA
+Kenai.seqrun1.126.S126.L001,c19_fishcard_Kenai.seqrun1.126.S126.L001,Neg_plate_25,NA,52386_025,Kenai_seqrun1_126,NA,Neg_plate_25,NA,NA,NA,NA,NA,NA,39,8,NA,Control,Neg,NA,NA
